@@ -1,1 +1,69 @@
+import pygame
+import time
+import random
+import sys
 
+pygame.init()
+
+width = 600
+height = 400
+
+black = (0, 0, 0)
+green = (0, 255, 0)
+red = (255, 0, 0)
+white = (255, 255, 255)
+
+
+block_size = 20
+clock = pygame.time.Clock()
+
+font_style = pygame.font.SysFont(None, 35)
+score_font = pygame.font.SysFont(None, 30)
+
+screen = pygame.display.set_mode((width, height))
+pygame.display.set_caption("Snake Game")
+
+def score_display(score):
+    value = score_font.render("Score: " + str(score), True, white)
+    screen.blit(value, [10,10])
+
+def message(msg, color, y_displace=0):
+    msg = font_style.render(msg, True, color)
+    screen.blit(msg, [width / 6, height / 3 + y_displace])
+
+def draw_snake(snake_blocks):
+    for block in snake_blocks:
+        pygame.draw.rect(screen, green, [block[0], block[1], block_size, block_size])
+
+def game_loop():
+
+  for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                game_over = True
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    x_change = -block_size
+                    y_change = 0
+                elif event.key == pygame.K_RIGHT:
+                    x_change = block_size
+                    y_change = 0
+                elif event.key == pygame.K_UP:
+                    y_change = -block_size
+                    x_change = 0
+                elif event.key == pygame.K_DOWN:
+                    y_change = block_size
+                    x_change = 0
+
+        x += x_change
+        y += y_change
+
+
+  pygame.quit
+  quit()
+
+game_loop()
+
+This is what I have gotten done so far. I am made sure to give the game window it's name and have everything I will need defined before I start the game loop and dive into that. I also learned first about the arrow key controls first which was the trickiest thing.
+I used the pygame website that was shown to us for most of my referencing. I will soon be learning to code the snake's length and growth, which also comes with coding the food into the game as well.
+I choose to do the snake game because that was the game I felt I would feel the most enjoyment during the process throughout this project. 
+I will make sure I am very well educated and prepared when it comes the day I must present and run my Snake Game. 
